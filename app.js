@@ -22,7 +22,7 @@ app.use('/api/v1/task', taskRouter);
 
 app.use(
   cors({
-    origin: ['*', 'process.env.FRONTEND_URL'],
+    origin: ['process.env.FRONTEND_URL', '*'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 200,
@@ -31,6 +31,14 @@ app.use(
 
 app.get('/', (req, res) => {
   res.send('Nice Working');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Max-Age', '1800');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'PUT, POST, GET, DELETE, PATCH, OPTIONS'
+  );
 });
 
 //using error handler
