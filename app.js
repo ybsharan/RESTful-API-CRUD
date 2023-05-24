@@ -19,11 +19,13 @@ app.use(cookieParser());
 //using routes
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/task', taskRouter);
+
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: ['process.env.FRONTEND_URL', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 
